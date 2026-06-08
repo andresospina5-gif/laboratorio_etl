@@ -3,34 +3,42 @@ from app.database import cartas_collection
 
 def obtener_cartas(cantidad):
 
-    cartas = []
+    try:
 
-    page = 1
-    page_size = 250
+        cartas = []
 
-    while len(cartas) < cantidad:
+        page = 1
+        page_size = 250
 
-        response = requests.get(
-            "https://api.pokemontcg.io/v2/cards",
-            params={
-                "page": page,
-                "pageSize": page_size
-            }
-        )
+        while len(cartas) < cantidad:
 
-        if response.status_code != 200:
-            break
+            response = requests.get(
+                "https://api.pokemontcg.io/v2/cards",
+                params={
+                    "page": page,
+                    "pageSize": page_size
+                }
+            )
 
-        data = response.json()["data"]
+            if response.status_code != 200:
+                break
 
-        if not data:
-            break
+            data = response.json()["data"]
 
-        cartas.extend(data)
+            if not data:
+                break
 
-        page += 1
+            cartas.extend(data)
 
-    return cartas[:cantidad]
+            page += 1
+
+        return cartas[:cantidad]
+
+    except Exception as e:
+
+        print(f"Error obteniendo cartas: {e}")
+
+        return []
 
 def guardar_cartas_mongo(cartas):
 

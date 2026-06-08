@@ -20,6 +20,11 @@ def prueba():
 @router.post("/extraer")
 def extraer(request: ExtraccionRequest):
 
+    if request.cantidad <= 0:
+        return {
+            "error": "La cantidad debe ser mayor que cero"
+        }
+
     cartas = obtener_cartas(request.cantidad)
 
     insertadas = guardar_cartas_mongo(cartas)
