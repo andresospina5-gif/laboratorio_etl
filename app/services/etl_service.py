@@ -50,3 +50,9 @@ def guardar_cartas_mongo(cartas):
             insertadas += 1
 
     return insertadas
+
+def reset_mongo():
+
+    resultado = cartas_collection.delete_many({})
+
+    return resultado.deleted_count

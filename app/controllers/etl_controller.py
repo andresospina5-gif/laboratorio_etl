@@ -2,7 +2,8 @@ from fastapi import APIRouter
 from app.views.schemas import ExtraccionRequest
 from app.services.etl_service import (
     obtener_cartas,
-    guardar_cartas_mongo
+    guardar_cartas_mongo,
+    reset_mongo
 )
 
 router = APIRouter(
@@ -27,4 +28,14 @@ def extraer(request: ExtraccionRequest):
         "cantidad_solicitada": request.cantidad,
         "cartas_obtenidas": len(cartas),
         "cartas_insertadas": insertadas
+    }
+
+@router.post("/reset")
+def reset():
+
+    eliminados = reset_mongo()
+
+    return {
+        "mensaje": "Coleccion reiniciada",
+        "registros_eliminados": eliminados
     }
