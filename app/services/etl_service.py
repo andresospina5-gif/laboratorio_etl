@@ -2,19 +2,31 @@ import requests
 
 def obtener_cartas(cantidad):
 
-    url = "https://api.pokemontcg.io/v2/cards"
+    cartas = []
 
-    response = requests.get(
-        url,
-        params={
-            "page": 1,
-            "pageSize": cantidad
-        }
-    )
+    page = 1
+    page_size = 250
 
-    if response.status_code != 200:
-        return []
+    while len(cartas) < cantidad:
 
-    data = response.json()
+        response = requests.get(
+            "https://api.pokemontcg.io/v2/cards",
+            params={
+                "page": page,
+                "pageSize": page_size
+            }
+        )
 
-    return data["data"]
+        if response.status_code != 200:
+            break
+
+        data = response.json()["data"]
+
+        if not data:
+            break
+
+        cartas.extend(data)
+
+        page += 1
+
+    return cartas[:cantidad]
