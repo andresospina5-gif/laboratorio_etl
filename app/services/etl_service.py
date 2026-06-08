@@ -1,4 +1,5 @@
 import requests
+from app.database import cartas_collection
 
 def obtener_cartas(cantidad):
 
@@ -30,3 +31,22 @@ def obtener_cartas(cantidad):
         page += 1
 
     return cartas[:cantidad]
+
+def guardar_cartas_mongo(cartas):
+
+    insertadas = 0
+
+    for carta in cartas:
+
+        carta["_id"] = carta["id"]
+
+        resultado = cartas_collection.update_one(
+            {"_id": carta["_id"]},
+            {"$set": carta},
+            upsert=True
+        )
+
+        if resultado.upserted_id:
+            insertadas += 1
+
+    return insertadas

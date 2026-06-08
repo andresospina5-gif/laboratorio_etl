@@ -1,6 +1,9 @@
 from fastapi import APIRouter
 from app.views.schemas import ExtraccionRequest
-from app.services.etl_service import obtener_cartas
+from app.services.etl_service import (
+    obtener_cartas,
+    guardar_cartas_mongo
+)
 
 router = APIRouter(
     prefix="/api/v1/etl",
@@ -18,8 +21,10 @@ def extraer(request: ExtraccionRequest):
 
     cartas = obtener_cartas(request.cantidad)
 
+    insertadas = guardar_cartas_mongo(cartas)
+
     return {
-        "mensaje": "Extraccion recibida",
         "cantidad_solicitada": request.cantidad,
-        "cartas_obtenidas": len(cartas)
+        "cartas_obtenidas": len(cartas),
+        "cartas_insertadas": insertadas
     }
