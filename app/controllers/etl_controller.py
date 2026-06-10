@@ -28,3 +28,13 @@ def extraer(request: ExtraccionRequest):
         "fuente": "Pokémon TCG API",
         "status": 201
     }
+# ── Endpoint B: Transformación y Carga ───────────────────────────────────────
+@router.post("/transformar", status_code=200)
+def transformar():
+    total_procesados = transformar_y_cargar()
+    return {
+        "mensaje": "Pipeline finalizado",
+        "registros_procesados": total_procesados,
+        "tabla_destino": "cartas_master",
+        "status": 200
+    }
