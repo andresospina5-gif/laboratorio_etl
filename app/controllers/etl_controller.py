@@ -38,3 +38,14 @@ def transformar():
         "tabla_destino": "cartas_master",
         "status": 200
     }
+# ── Endpoint C: Reset ─────────────────────────────────────────────────────────
+@router.delete("/reset", status_code=200)
+def reset():
+    mongo_eliminados = reset_mongo()
+    mysql_eliminadas = reset_mysql()
+    return {
+        "mensaje": "Sistema reseteado correctamente",
+        "mongo_docs_eliminados": mongo_eliminados,
+        "mysql_rows_eliminadas": mysql_eliminadas,
+        "status": 200
+    }
