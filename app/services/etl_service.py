@@ -171,3 +171,23 @@ def transformar_y_cargar():
         session.close()
  
     return len(df_final)   # total procesados
+
+def reset_mysql():
+    """Vacía la tabla con TRUNCATE (no DROP) y retorna filas eliminadas."""
+    session = SessionLocal()
+    try:
+        # Contar antes de borrar
+        count_result = session.execute(text("SELECT COUNT(*) FROM cartas_master"))
+        total = count_result.scalar()
+        session.execute(text("SET FOREIGN_KEY_CHECKS = 0"))
+        session.execute(text("TRUNCATE TABLE cartas_master"))
+        session.execute(text("SET FOREIGN_KEY_CHECKS = 1"))
+        session.commit()
+        return total
+    except Exception as e:
+        session.rollback()
+        print(f"Error en reset MySQL: {e}")
+        raise e
+    finally:
+        session.close()
+ 
