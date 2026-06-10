@@ -52,3 +52,17 @@ def guardar_cartas_mongo(cartas):
 def reset_mongo():
     resultado = cartas_collection.delete_many({})
     return resultado.deleted_count
+
+def _parse_fecha(fecha_str: str):
+    if not fecha_str:
+        return None
+    try:
+        return datetime.strptime(fecha_str, "%Y/%m/%d").date()
+    except Exception:
+        return None
+
+def _parse_hp(hp_str):
+    try:
+        return int(hp_str)
+    except (TypeError, ValueError):
+        return None
