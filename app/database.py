@@ -1,5 +1,9 @@
+import os
+from dotenv import load_dotenv
 from pymongo import MongoClient
 
-client = MongoClient("mongodb+srv://yasleidy:taller2026@cluster0.hdrwulj.mongodb.net/?appName=Cluster0")
+load_dotenv()
+
+client = MongoClient(os.getenv("MONGO_URI"))
 db = client["laboratorio_etl"]
 cartas_collection = db["cartas"]

@@ -7,7 +7,12 @@ from app.database import cartas_collection
 from app.models.personajes_sql import Base, CartaPokemon
 
 # Conexión MySQL
-DATABASE_URL = "mysql+mysqlconnector://root:yasleidy08@localhost:3306/laboratorio_etl"
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+DATABASE_URL = f"mysql+mysqlconnector://{os.getenv('MYSQL_USER')}:{os.getenv('MYSQL_PASSWORD')}@{os.getenv('MYSQL_HOST')}:3306/{os.getenv('MYSQL_DB')}"
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(bind=engine)
 
