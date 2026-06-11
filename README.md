@@ -79,28 +79,30 @@ uvicorn app.main:app --reload
 
 ## Estructura del proyecto
 
+```
 laboratorio_etl/
-├── .env                    # Credenciales locales (no se sube)
-├── .env.example            # Plantilla de variables de entorno
+├── .env                    
+├── .env.example            
 ├── .gitignore
 ├── requirements.txt
 └── app/
-├── main.py             # Inicialización de FastAPI
-├── config.py
-├── database.py         # Conexión MongoDB
-├── controllers/
-│   ├── etl_controller.py
-│   └── analitica_controller.py
-├── models/
-│   └── personajes_sql.py
-├── services/
-│   ├── etl_service.py
-│   └── analitica_service.py
-└── views/
-├── schemas.py
-└── analitica_schemas.py
+    ├── main.py             
+    ├── config.py
+    ├── database.py         
+    ├── controllers/
+    │   ├── etl_controller.py
+    │   └── analitica_controller.py
+    ├── models/
+    │   └── personajes_sql.py
+    ├── services/
+    │   ├── etl_service.py
+    │   └── analitica_service.py
+    └── views/
+        ├── schemas.py
+        └── analitica_schemas.py
+```
 
-## División de trabajo
+<!-- ## División de trabajo -->
 
 | Integrante | Responsabilidad |
 |------------|----------------|
