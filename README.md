@@ -101,6 +101,17 @@ laboratorio_etl/
         ├── schemas.py
         └── analitica_schemas.py
 ```
+## Cómo correr las pruebas de integración
+
+1. Instalar dependencias de prueba:
+```bash
+pip install pytest httpx
+```
+
+2. Correr las pruebas:
+```bash
+pytest tests/
+```
 
 <!-- ## División de trabajo -->
 
