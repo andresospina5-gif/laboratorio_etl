@@ -55,6 +55,7 @@ def guardar_cartas_mongo(cartas):
     return insertadas
 
 def reset_mongo():
+    """Elimina todos los documentos de la colección MongoDB."""
     resultado = cartas_collection.delete_many({})
     return resultado.deleted_count
 
