@@ -38,7 +38,7 @@ def transformar():
         "tabla_destino": "cartas_master",
         "status": 200
     }
-# ── Endpoint C: Reset ─────────────────────────────────────────────────────────
+# Endpoint C: Reset — limpia MongoDB con delete_many y MySQL con TRUNCATE
 @router.delete("/reset", status_code=200)
 def reset():
     mongo_eliminados = reset_mongo()
