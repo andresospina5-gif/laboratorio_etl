@@ -1,0 +1,146 @@
+{
+  "info": {
+    "_postman_id": "0990bf97-0e5c-4821-aa25-2ce88e6004e0",
+    "name": "Laboratorio ETL",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55255075",
+    "_collection_link": "https://go.postman.co/collection/55255075-0990bf97-0e5c-4821-aa25-2ce88e6004e0?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "extraer",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"cantidad\": 50\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/v1/etl/extraer",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "v1",
+            "etl",
+            "extraer"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Transformar",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/v1/etl/transformar",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "v1",
+            "etl",
+            "transformar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Reset",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/v1/etl/reset",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "v1",
+            "etl",
+            "reset"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Analitica Columna",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/v1/analitica/columna/nombre",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "v1",
+            "analitica",
+            "columna",
+            "nombre"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Perfil Dual",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/v1/perfil/hgss4-1",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "v1",
+            "perfil",
+            "hgss4-1"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
